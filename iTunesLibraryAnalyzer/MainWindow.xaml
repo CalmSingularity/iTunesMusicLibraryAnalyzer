@@ -1,0 +1,40 @@
+﻿<Window x:Name="mainWindow" x:Class="iTunesLibraryAnalyzer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:iTunesLibraryAnalyzer"
+        mc:Ignorable="d"
+        Title="iTunes Music Library Analyzer" Height="450" Width="525" Loaded="mainWindow_Loaded">
+	<Grid>
+		<DockPanel>
+			<StackPanel Margin="10" DockPanel.Dock="Top">
+				<DockPanel Margin="0,0,0,5">
+					<TextBlock>iTunes Music Library .xml file:</TextBlock>
+					<TextBlock DockPanel.Dock="Right" HorizontalAlignment="Right">
+						<Hyperlink RequestNavigate="Hyperlink_RequestNavigate" NavigateUri="https://support.apple.com/en-us/HT201610">
+							Where to find the music library file?
+						</Hyperlink>
+					</TextBlock>
+				</DockPanel>
+				<DockPanel>
+					<Button x:Name="btnBrowse" DockPanel.Dock="Right" Height="23" Content="Browse..."  Width="80" HorizontalAlignment="Right" Margin="10,0,0,0" Click="btnBrowse_Click"></Button>
+					<TextBox x:Name="tbLibraryFilePathName" TextWrapping="Wrap" Text="C:\Users\USERNAME\Music\iTunes\iTunes Music Library.xml" Height="23"/>
+				</DockPanel>
+
+				<DockPanel Margin="0,10,0,0">
+					<Label Target="{Binding ElementName=cbKeyToAnalyze}" DockPanel.Dock="Left" Content="Group by:"/>
+					<Button x:Name="btnAnalyze" DockPanel.Dock="Right" Width="80" HorizontalAlignment="Right" Content="Analyze" Click="btnAnalyze_Click" Height="23"/>
+					<ComboBox x:Name="cbKeyToAnalyze" Margin="5,0,10,0" SelectedIndex="0" Height="23">
+						<ComboBoxItem Content="Genre"/>
+						<ComboBoxItem Content="Artist"/>
+						<ComboBoxItem Content="Rating"/>
+						<ComboBoxItem Content="Kind"/>
+						<ComboBoxItem Content="Year"/>
+					</ComboBox>
+				</DockPanel>
+			</StackPanel>
+			<TextBox x:Name="tbResults" VerticalScrollBarVisibility="Auto"></TextBox>
+		</DockPanel>
+	</Grid>
+</Window>
